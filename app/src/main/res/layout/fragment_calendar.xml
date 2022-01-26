@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:id="@+id/frame_layout"
+             tools:context=".calendarFragment">
+    <Button
+            android:text="Start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/startBtn"
+            android:onClick="startPeriodAction"
+            android:backgroundTint="#49274A"/>
+    <Button
+            android:text="End"
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/endBtn"
+            android:onClick="endPeriodAction"
+            android:backgroundTint="#49274A"/>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="100dp">
+        <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="←"
+                android:id="@+id/previousMonthBtn"
+                android:textColor="@color/white"
+                android:background="@null"
+                android:textStyle="bold"
+                android:onClick="previousMonthAction"
+                android:textSize="20sp"/>
+        <TextView
+                android:id="@+id/monthYearTV"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:text="Feb 2021"
+                android:textSize="20sp"
+                android:textAlignment="center"
+                android:textColor="@color/black"/>
+        <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="→"
+                android:id="@+id/nextMonthBtn"
+                android:textColor="@color/white"
+                android:background="@null"
+                android:textStyle="bold"
+                android:onClick="nextMonthAction"
+                android:textSize="20sp"/>
+
+    </LinearLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_marginTop="160dp">
+        android:orientation="horizontal">
+
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="SUN"
+                android:textColor="@color/grey"
+                android:textAlignment="center"
+                android:textSize="16sp"/>
+
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="MON"
+                android:textColor="@color/grey"
+                android:textAlignment="center"
+                android:textSize="16sp"/>
+
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TUE"
+                android:textColor="@color/grey"
+                android:textAlignment="center"
+                android:textSize="16sp"/>
+
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="WED"
+                android:textColor="@color/grey"
+                android:textAlignment="center"
+                android:textSize="16sp"/>
+
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="THUR"
+                android:textColor="@color/grey"
+                android:textAlignment="center"
+                android:textSize="16sp"/>
+
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="FRI"
+                android:textColor="@color/grey"
+                android:textAlignment="center"
+                android:textSize="16sp"/>
+
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="SAT"
+                android:textColor="@color/grey"
+                android:textAlignment="center"
+                android:textSize="16sp"/>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/calendarRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_marginTop="180dp"
+            android:layout_height="286dp">
+    </androidx.recyclerview.widget.RecyclerView>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_marginTop="470dp"
+            android:layout_height="50dp">
+        <TextView
+                android:text="\tAverage Period Length \t:"
+                android:layout_width="10dp"
+                android:layout_height="wrap_content" android:id="@+id/textView2" android:layout_weight="1"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/showAverageCycleLength" android:layout_weight="1"/>
+
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_marginTop="520dp"
+            android:layout_height="50dp">
+        <Button
+                android:layout_width="120dp"
+                android:layout_height="55dp"
+                android:text="Period log"
+                android:id="@+id/activityLogBtn"
+                android:layout_marginLeft="140dp">
+
+        </Button>
+
+    </LinearLayout>
+
+</FrameLayout>

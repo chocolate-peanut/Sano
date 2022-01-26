@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+        android:fillViewport="true"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        tools:layout_editor_absoluteX = "1dp"
+        tools:layout_editor_absoluteY = "1dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".AnalysisFragment">
+
+        <TextView
+                android:layout_width="61dp"
+                android:layout_height="36dp"
+                android:text="BMI :"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.062"
+                app:layout_constraintVertical_bias="0.059"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:id="@+id/textView1"/>
+        <TextView
+                android:layout_width="130dp"
+                android:layout_height="36dp"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/bmi"
+                android:enabled="false"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintHorizontal_bias="0.295" app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias="0.059"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" android:textColor="#100F0F"/>
+        <TextView
+                android:text="BMR:"
+                android:layout_width="61dp"
+                android:layout_height="36dp" android:id="@+id/textView2"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintHorizontal_bias="0.062" app:layout_constraintVertical_bias="0.092"/>
+        <TextView
+                android:layout_width="130dp"
+                android:layout_height="36dp"
+                android:inputType="textPersonName"
+                android:enabled="false"
+                android:ems="10"
+                android:id="@+id/bmr"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.295" app:layout_constraintVertical_bias="0.092"
+                android:textColor="#0B0A0A" android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+        <TextView
+                android:text="RMR:"
+                android:layout_width="61dp"
+                android:layout_height="36dp" android:id="@+id/textView3"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.062"
+                app:layout_constraintVertical_bias="0.125"/>
+
+        <TextView
+                android:layout_width="130dp"
+                android:layout_height="36dp"
+                android:inputType="textPersonName"
+                android:enabled="false"
+                android:ems="10"
+                android:id="@+id/rmr"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.295" app:layout_constraintVertical_bias="0.125"
+                android:textColor="#100E0E" android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+        <TextView
+                android:text="Period Length of Each Cycle (Days)"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/textView4"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias="0.211"/>
+
+        <TextView
+                android:text="Weight Category:"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/textView"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.09"
+                app:layout_constraintVertical_bias="0.166"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/category"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#0C0B0B" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.759"
+                app:layout_constraintVertical_bias="0.166"/>
+        <com.github.mikephil.charting.charts.LineChart
+                android:layout_width="393dp" android:layout_height="385dp"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_centerInParent="true"
+                android:id="@+id/graphview1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="280dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/textView7"
+                android:text="Mood of Selected Date (%)" android:textColor="#090808"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/graphview1" android:layout_marginTop="20dp"/>
+        <com.github.mikephil.charting.charts.PieChart
+                android:layout_width="399dp" android:layout_height="304dp"
+                android:id="@+id/pieChart"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="100dp"
+                app:layout_constraintTop_toBottomOf="@+id/textView7">
+        </com.github.mikephil.charting.charts.PieChart>
+        <TextView
+                android:text="No Data Available"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/dataAvailable"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView7" android:textColor="#050505"
+                android:textSize="24sp" android:layout_marginTop="-8dp"/>
+        <TextView
+                android:text="ANALYSIS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/textView5"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintHorizontal_bias="0.069" app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="24dp" android:textColor="#100F0F" android:textSize="20dp"
+                android:textStyle="bold"/>
+        <TextView
+                android:id="@+id/textView8"
+                android:layout_width="135dp"
+                android:layout_height="32dp"
+                android:text="Select Date:"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView7" android:layout_marginTop="5dp"
+                app:layout_constraintStart_toStartOf="@+id/textView7"
+                app:layout_constraintEnd_toEndOf="@+id/textView7"/>
+
+        <Button
+                android:id="@+id/startDateButton"
+                android:layout_width="158dp"
+                android:layout_height="44dp"
+                android:hint="Start Date"
+                android:inputType="date"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                style="?android:spinnerStyle"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView8"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/textView8" android:text="Start Date"
+                app:layout_constraintHorizontal_bias="0.188"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

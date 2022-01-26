@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/user/IntelliJIDEAProjects/combined part_v3/app/src/main/res/layout/diary_rview.xml" value="0.10925925925925926" />
+        <entry key="..\:/Users/user/IntelliJIDEAProjects/combined part_v3/app/src/main/res/layout/fragment_diary.xml" value="0.19375" />
+        <entry key="..\:/Users/user/IntelliJIDEAProjects/combined part_v3/app/src/main/res/layout/fragment_goal.xml" value="0.2" />
+        <entry key="..\:/Users/user/IntelliJIDEAProjects/combined part_v3/app/src/main/res/layout/goal_rview.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_15_PREVIEW" project-jdk-name="15" project-jdk-type="JavaSDK" />
+</project>

@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+             tools:context=".PeriodMoodFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+        <Button
+                android:text="Period"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/periodBtn"/>
+        <Button
+                android:text="Mood"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/moodBtn"
+                android:layout_weight="1"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_marginTop="65dp"
+            android:layout_height="wrap_content">
+        <TextView
+                android:text="Selected Date : "
+                android:layout_width="wrap_content"
+                android:textAlignment="center"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/showDate"
+                android:text=""
+                android:layout_weight="1"/>
+    </LinearLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginTop="90dp"
+            android:id="@+id/period_layout"
+            android:visibility="gone">
+        <TextView
+                android:text="Symptoms:"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0" android:layout_marginStart="2dp"/>
+        <CheckBox
+                android:text="Cramp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="@id/checkboxFatigue"
+                android:layout_width="133dp"
+                android:layout_height="48dp"
+                android:id="@+id/checkboxCramp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:onClick="onCheckboxSymptomClicked"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="4dp"/>
+        <CheckBox
+                android:text="Fatigue"
+                app:layout_constraintLeft_toLeftOf="@+id/checkboxCramp"
+                android:layout_width="133dp"
+                android:layout_height="48dp"
+                android:id="@+id/checkboxFatigue"
+                app:layout_constraintStart_toStartOf="parent"
+                android:onClick="onCheckboxSymptomClicked"
+                app:layout_constraintEnd_toEndOf="@+id/checkboxInsomnia"
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+                android:layout_marginTop="48dp"/>
+        <CheckBox
+                android:text="Headache"
+                android:layout_width="133dp"
+                android:layout_height="48dp"
+                android:id="@+id/checkboxHeadache"
+                android:onClick="onCheckboxSymptomClicked"
+                app:layout_constraintTop_toBottomOf="@+id/checkboxCramp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="4dp"/>
+        <CheckBox
+                android:text="Pimples"
+                android:layout_width="133dp"
+                android:layout_height="48dp"
+                android:id="@+id/checkBoxPimples"
+                app:layout_constraintTop_toTopOf="parent"
+                android:onClick="onCheckboxSymptomClicked"
+                android:layout_marginTop="24dp"
+                app:layout_constraintEnd_toEndOf="parent"/>
+        <CheckBox
+                android:text="Insomnia"
+                android:layout_width="133dp"
+                android:layout_height="48dp"
+                android:id="@+id/checkboxInsomnia"
+                android:onClick="onCheckboxSymptomClicked"
+                app:layout_constraintLeft_toRightOf="@+id/checkboxFatigue"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@+id/checkBoxPimples"/>
+        <CheckBox
+                android:text="Bloating"
+                android:layout_width="133dp"
+                android:layout_height="48dp"
+                android:id="@+id/checkboxBloating"
+                android:layout_marginStart="2dp"
+                android:onClick="onCheckboxSymptomClicked"
+                app:layout_constraintStart_toEndOf="@+id/checkboxCramp" android:layout_marginBottom="1dp"
+                app:layout_constraintBottom_toTopOf="@+id/checkboxFatigue" android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+                app:layout_constraintEnd_toStartOf="@+id/checkBoxPimples" android:layout_marginEnd="7dp"/>
+        <TextView
+                android:text="Intercourse:"
+                android:layout_width="116dp"
+                android:onClick="onCheckboxSymptomClicked"
+                android:layout_height="21dp" android:id="@+id/textView4"
+                android:minHeight="48dp"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="2dp"
+                android:layout_marginTop="13dp" app:layout_constraintTop_toBottomOf="@+id/checkboxHeadache"
+                tools:ignore="TouchTargetSizeCheck"/>
+        <CheckBox
+                android:text="Yes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/checkboxYes"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="4dp"
+                android:layout_marginTop="9dp" app:layout_constraintTop_toBottomOf="@+id/textView4"/>
+        <CheckBox
+                android:text="No"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/checkboxNo"
+                android:layout_marginStart="77dp" app:layout_constraintStart_toEndOf="@+id/checkboxYes"
+                android:layout_marginTop="45dp" app:layout_constraintTop_toBottomOf="@+id/checkboxFatigue"/>
+        <TextView
+                android:text="Period:"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/textView7"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="2dp"
+                android:layout_marginTop="13dp" app:layout_constraintTop_toBottomOf="@+id/checkboxYes"/>
+        <CheckBox
+                android:text="Yes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/PeriodCheckboxYes"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="4dp"
+                android:layout_marginTop="5dp" app:layout_constraintTop_toBottomOf="@+id/textView7"/>
+        <CheckBox
+                android:text="No"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/PeriodCheckboxNo"
+                android:layout_marginStart="77dp"
+                app:layout_constraintStart_toEndOf="@+id/PeriodCheckboxYes" android:layout_marginTop="35dp"
+                app:layout_constraintTop_toBottomOf="@+id/checkboxNo"/>
+        <Button
+                android:text="Save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/periodSaveButton"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="148dp"
+                android:layout_marginTop="30dp" app:layout_constraintTop_toBottomOf="@+id/PeriodCheckboxNo"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="520dp"
+            android:layout_marginTop="90dp"
+            android:id="@+id/mood_layout"
+            android:visibility="gone">
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="413dp"
+                android:layout_height="142dp"
+                android:id="@+id/moodConstraintLayout" app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+            tools:layout_editor_absoluteX="349dp" tools:layout_editor_absoluteY="95dp"/>
+            <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal"
+                    android:id="@+id/moodRadioGroup"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="92dp"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                <RadioButton
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:id="@+id/happyRadioButton"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="25dp"
+                        app:layout_constraintTop_toBottomOf="@+id/textView5"/>
+                <RadioButton
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="35dp"
+                        android:id="@+id/sadRadioButton"/>
+                <RadioButton
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="35dp"
+                        android:id="@+id/angryRadioButton"/>
+                <RadioButton
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:id="@+id/neutralRadioButton"
+                        android:layout_marginStart="35dp"/>
+                <RadioButton
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:id="@+id/sickRadioButton"
+                        android:layout_marginStart="35dp"/>
+            </RadioGroup>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+                android:text="Mood"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView3"
+                android:layout_weight="1" app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" android:layout_marginStart="2dp"/>
+        <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_happy"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/textView3" android:id="@+id/imageView"
+                android:layout_marginTop="5dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Happy" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="21dp" app:layout_constraintTop_toBottomOf="@+id/imageView"
+                android:id="@+id/textView5"/>
+        <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_sad"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="100dp"
+                app:layout_constraintTop_toBottomOf="@+id/textView3"
+                android:id="@+id/sadIcon"
+                android:layout_marginTop="4dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sad"
+                android:id="@+id/sadTextview"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="112dp"
+                app:layout_constraintTop_toBottomOf="@+id/sadIcon"/>
+        <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_angry"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="180dp"
+                app:layout_constraintTop_toBottomOf="@+id/textView3"
+                android:id="@+id/angryIcon"
+                android:layout_marginTop="4dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Angry"
+                android:id="@+id/andryTetview"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="184dp"
+                app:layout_constraintTop_toBottomOf="@+id/angryIcon"/>
+        <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_neutral"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="264dp"
+                app:layout_constraintTop_toBottomOf="@+id/textView3"
+                android:id="@+id/neutralIcon"
+                android:layout_marginTop="4dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Neutral"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="266dp"
+                app:layout_constraintTop_toBottomOf="@+id/angryIcon"
+                android:layout_marginTop="0dp"/>
+        <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_sick"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="344dp"
+                app:layout_constraintTop_toBottomOf="@+id/textView3"
+                android:id="@+id/SickIcon"
+                android:layout_marginTop="4dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sick"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="360dp"
+                app:layout_constraintTop_toBottomOf="@+id/angryIcon"
+                android:layout_marginTop="0dp"/>
+        <TextView
+                android:layout_width="39dp"
+                android:layout_height="23dp"
+                android:text="Sport"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="11dp"
+                app:layout_constraintTop_toBottomOf="@+id/moodConstraintLayout" android:id="@+id/textView6"/>
+        <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_walking"
+                app:layout_constraintTop_toBottomOf="@+id/textView6" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp" android:id="@+id/imageView2"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="413dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="8dp"
+                android:id="@+id/sportConstraintLayout"
+                app:layout_constraintTop_toBottomOf="@+id/moodConstraintLayout"
+                app:layout_constraintStart_toStartOf="parent">
+            <TextView
+                    android:layout_width="52dp"
+                    android:layout_height="22dp"
+                    android:text="Walking"
+                    android:id="@+id/textView8"
+                    app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="72dp"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"/>
+            <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/ic_swimming"
+                    android:id="@+id/imageView3"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="22dp" app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="98dp"/>
+            <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="22dp"
+                    android:text="Swimming"
+                    android:layout_marginStart="23dp"
+                    app:layout_constraintStart_toEndOf="@+id/textView8"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView3"
+                    android:id="@+id/textView9"/>
+            <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/ic_tennis"
+                    android:id="@+id/imageView4"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="22dp"
+                    android:layout_marginStart="33dp"
+                    app:layout_constraintStart_toEndOf="@+id/imageView3"/>
+            <TextView
+                    android:layout_width="44dp"
+                    android:layout_height="22dp"
+                    android:text="Tennis"
+                    android:id="@+id/textView10"
+                    tools:layout_editor_absoluteX="184dp"
+                    android:layout_marginStart="25dp"
+                    app:layout_constraintStart_toEndOf="@+id/textView9"
+                    android:layout_marginTop="2dp"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView4"/>
+            <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/ic_biking"
+                    android:id="@+id/imageView5"
+                    android:layout_marginStart="26dp"
+                    app:layout_constraintStart_toEndOf="@+id/imageView4" app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="22dp"/>
+            <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="22dp"
+                    android:text="Cycling"
+                    android:id="@+id/textView11"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView5" android:layout_marginStart="28dp"
+                    app:layout_constraintStart_toEndOf="@+id/textView10"/>
+            <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/ic_basketball"
+                    android:id="@+id/imageView6"
+                    app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="22dp"
+                    android:layout_marginStart="32dp" app:layout_constraintStart_toEndOf="@+id/imageView5"/>
+            <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="22dp"
+                    android:text="Basketball"
+                    android:id="@+id/textView12"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView6" android:layout_marginStart="32dp"
+                    app:layout_constraintStart_toEndOf="@+id/textView11"/>
+            <RadioGroup
+                    android:layout_width="match_parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView9"
+                    android:orientation="horizontal"
+                    android:layout_height="50dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:id="@+id/sportRadioGroup">
+                <RadioButton
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:id="@+id/walkingRadioButton"
+                        app:layout_constraintTop_toBottomOf="@+id/textView8"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="25dp"/>
+                <RadioButton
+                        android:layout_width="48dp"
+                        android:layout_height="48dp" android:id="@+id/swimmingRadioButton"
+                        app:layout_constraintTop_toBottomOf="@+id/textView9" android:layout_marginStart="32dp"
+                        app:layout_constraintStart_toEndOf="@+id/walkingRadioButton"/>
+                <RadioButton
+                        android:layout_width="48dp"
+                        android:layout_height="48dp" android:id="@+id/tennisRadioButton"
+                        app:layout_constraintTop_toBottomOf="@+id/textView10" android:layout_marginStart="35dp"
+                        app:layout_constraintStart_toEndOf="@+id/swimmingRadioButton"/>
+                <RadioButton
+                        android:layout_width="48dp"
+                        android:layout_height="48dp" android:id="@+id/cyclingRadioButton"
+                        app:layout_constraintTop_toBottomOf="@+id/textView11" android:layout_marginStart="30dp"
+                        app:layout_constraintStart_toEndOf="@+id/tennisRadioButton"/>
+                <RadioButton
+                        android:layout_width="48dp"
+                        android:layout_height="48dp" android:id="@+id/basketballRadioButton"
+                        app:layout_constraintTop_toBottomOf="@+id/textView12" android:layout_marginStart="30dp"
+                        app:layout_constraintStart_toEndOf="@+id/cyclingRadioButton"/>
+            </RadioGroup>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="411dp"
+                android:layout_height="150dp"
+                android:id="@+id/activityConstraintLayout"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/sportConstraintLayout">
+
+            <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="22dp"
+                    android:text="Actvity"
+                    android:id="@+id/textView13"
+                    app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="2dp"/>
+            <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/ic_game"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
+                    app:layout_constraintTop_toBottomOf="@+id/textView13" android:id="@+id/imageView7"/>
+            <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="22dp"
+                    android:text="Game"
+                    android:textAlignment="center"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="18dp"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView7" android:id="@+id/textView14"/>
+            <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/ic_meditation"
+                    android:id="@+id/imageView8"
+                    app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="22dp"
+                    android:layout_marginStart="35dp" app:layout_constraintStart_toEndOf="@+id/imageView7"/>
+            <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="22dp"
+                    android:text="Meditation"
+                    android:textAlignment="center"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView8" android:layout_marginStart="23dp"
+                    app:layout_constraintStart_toEndOf="@+id/textView14" android:id="@+id/textView15"/>
+            <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/ic_movie"
+                    android:id="@+id/imageView9"
+                    app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="22dp"
+                    android:layout_marginStart="33dp" app:layout_constraintStart_toEndOf="@+id/imageView8"/>
+            <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="22dp"
+                    android:text="Movie"
+                    android:textAlignment="center"
+                    android:layout_marginStart="23dp" app:layout_constraintStart_toEndOf="@+id/textView15"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView9" android:id="@+id/textView16"/>
+            <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/ic_party"
+                    android:id="@+id/imageView10"
+                    app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="22dp"
+                    android:layout_marginStart="30dp" app:layout_constraintStart_toEndOf="@+id/imageView9"/>
+            <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="20dp"
+                    android:text="Party"
+                    android:textAlignment="center"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView10" android:layout_marginStart="30dp"
+                    app:layout_constraintStart_toEndOf="@+id/textView16" android:id="@+id/textView17"/>
+            <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/ic_read_book"
+                    android:id="@+id/imageView11"
+                    app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="22dp"
+                    android:layout_marginStart="31dp" app:layout_constraintStart_toEndOf="@+id/imageView10"/>
+            <TextView
+                    android:layout_width="55dp"
+                    android:layout_height="48dp"
+                    android:text="Reading"
+                    android:textAlignment="center"
+                    android:layout_marginStart="26dp" app:layout_constraintStart_toEndOf="@+id/imageView10"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView11" android:id="@+id/textView18"/>
+            <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal"
+                    android:id="@+id/activityRadioGroup"
+                    app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/textView14">
+                <RadioButton
+                        android:layout_width="48dp"
+                        android:layout_height="48dp" android:id="@+id/gameRadioButton"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="25dp" app:layout_constraintTop_toBottomOf="@+id/textView14"/>
+                <RadioButton
+                        android:layout_width="48dp"
+                        android:layout_height="48dp" android:id="@+id/meditationRadioButton"
+                        app:layout_constraintTop_toBottomOf="@+id/textView15" android:layout_marginStart="37dp"
+                        app:layout_constraintStart_toEndOf="@+id/gameRadioButton"/>
+                <RadioButton
+                        android:layout_width="48dp"
+                        android:layout_height="48dp" android:id="@+id/movieRadioButton"
+                        app:layout_constraintTop_toBottomOf="@+id/textView16" android:layout_marginStart="32dp"
+                        app:layout_constraintStart_toEndOf="@+id/meditationRadioButton"/>
+                <RadioButton
+                        android:layout_width="48dp"
+                        android:layout_height="48dp" android:id="@+id/partyRadioButton"
+                        app:layout_constraintTop_toBottomOf="@+id/textView17" android:layout_marginStart="34dp"
+                        app:layout_constraintStart_toEndOf="@+id/movieRadioButton"/>
+                <RadioButton
+                        android:layout_width="48dp"
+                        android:layout_height="48dp" android:id="@+id/readingRadioButton"
+                        app:layout_constraintTop_toBottomOf="@+id/textView18" android:layout_marginStart="28dp"
+                        app:layout_constraintStart_toEndOf="@+id/partyRadioButton"/>
+            </RadioGroup>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+                android:text="Save"
+                android:layout_width="80dp"
+                android:layout_height="48dp" android:id="@+id/moodSaveButton"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="165dp"
+                app:layout_constraintTop_toBottomOf="@+id/activityConstraintLayout"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

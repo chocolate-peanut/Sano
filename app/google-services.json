@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1012546845276",
+    "project_id": "sano-b3e37",
+    "storage_bucket": "sano-b3e37.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1012546845276:android:c59bdb318fe61ef3a30499",
+        "android_client_info": {
+          "package_name": "com.example.sano"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1012546845276-gijg336s6hiht0uoahnrtvr1ogg7penb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALh8lhFDosp5yYm7ZOYOhVxE99jLXnc-o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1012546845276-gijg336s6hiht0uoahnrtvr1ogg7penb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

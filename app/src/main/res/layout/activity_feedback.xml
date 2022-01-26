@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        tools:context=".Feedback"
+        android:background="#F8EEE7">
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/note_description"
+            android:text="FEEDBACK"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:padding="25dp"/>
+
+    <EditText
+            android:id="@+id/txt_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="tingsuqi@gmail.com , ting.su.qi47@gmail.com"
+
+            android:enabled="false"
+    />
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/design_default_color_primary"
+    />
+
+    <EditText
+            android:id="@+id/txt_subject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Subject your feedback"
+            android:lines="5"
+            android:gravity="start|top"
+    />
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/design_default_color_primary"
+    />
+
+    <EditText
+            android:id="@+id/txt_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Message feedback"
+            android:lines="5"
+            android:gravity="start|top"
+    />
+
+    <Button
+            android:id="@+id/bt_send"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Send to us!"
+    />
+
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:id="@+id/bt_back"
+            android:backgroundTint="#404040"
+            android:layout_marginTop="10dp"
+    />
+
+</LinearLayout>
