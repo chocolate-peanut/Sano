@@ -55,7 +55,7 @@ public class DiaryFragment extends Fragment {
 
         //--- retrieve data
         firestore = FirebaseFirestore.getInstance();
-        Query query = firestore.collection("diaries").orderBy("Content", Query.Direction.DESCENDING);
+        Query query = firestore.collection("diaries").orderBy("CreatedDate", Query.Direction.DESCENDING);
 
         FirestoreRecyclerOptions<Model> allDiaries = new FirestoreRecyclerOptions.Builder<Model>()
                 .setQuery(query, Model.class)
