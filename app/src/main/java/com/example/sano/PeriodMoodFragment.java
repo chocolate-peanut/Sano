@@ -230,7 +230,7 @@ public class PeriodMoodFragment extends AppCompatActivity {
                                 });
                             }
                         }
-                        }//end document reference exists
+                    }//end document reference exists
 
                     //click action for mood
                     //mood Layout
@@ -363,314 +363,315 @@ public class PeriodMoodFragment extends AppCompatActivity {
         //display Period layout
         Button displayPeriodButton = findViewById(R.id.periodBtn);
         displayPeriodButton.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            displayPeriod(v);
-            String dateDocumentReference;
-            DocumentReference documentReference = firestore.collection("periodMood").document(localDate.toString());
-            //data retrieval
-            documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-                @Override
-                public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
-                    if (documentSnapshot.exists()) {
+            @Override
+            public void onClick(View v) {
+                displayPeriod(v);
+                String dateDocumentReference;
+                DocumentReference documentReference = firestore.collection("periodMood").document(localDate.toString());
+                //data retrieval
+                documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
+                        if (documentSnapshot.exists()) {
 
-                        //get array of strings from symptom
-                        List<String> map = (List<String>) documentSnapshot.get("symptom");
-                        periodMood.setIntercourse(documentSnapshot.getString("intercourse"));
-                        periodMood.setPeriod(documentSnapshot.getString("period"));
-                        System.out.println(periodMood.getIntercourse());
-                        System.out.println(periodMood.getPeriod());
+                            //get array of strings from symptom
+                            List<String> map = (List<String>) documentSnapshot.get("symptom");
+                            periodMood.setIntercourse(documentSnapshot.getString("intercourse"));
+                            periodMood.setPeriod(documentSnapshot.getString("period"));
+                            System.out.println(periodMood.getIntercourse());
+                            System.out.println(periodMood.getPeriod());
 
-                        if(map.size()!=0) {
-                            for (int x = 0; x < map.size(); x++) {
-                                System.out.println(map.get(x));
-                                if (map.get(x).equals("cramp")) {
-                                    crampCheckbox.post(new Runnable() {
+                            if(map.size()!=0) {
+                                for (int x = 0; x < map.size(); x++) {
+                                    System.out.println(map.get(x));
+                                    if (map.get(x).equals("cramp")) {
+                                        crampCheckbox.post(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                crampCheckbox.performClick();
+                                            }
+                                        });
+                                    } else if (map.get(x).equals("bloating")) {
+                                        bloatingCheckbox.post(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                bloatingCheckbox.performClick();
+                                            }
+                                        });
+                                    } else if (map.get(x).equals("pimples")) {
+                                        pimplesCheckbox.post(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                pimplesCheckbox.performClick();
+                                            }
+                                        });
+                                    } else if (map.get(x).equals("pimples")) {
+                                        pimplesCheckbox.post(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                pimplesCheckbox.performClick();
+                                            }
+                                        });
+                                    } else if (map.get(x).equals("headache")) {
+                                        headacheCheckbox.post(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                headacheCheckbox.performClick();
+                                            }
+                                        });
+                                    } else if (map.get(x).equals("fatigue")) {
+                                        fatigueCheckbox.post(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                fatigueCheckbox.performClick();
+                                            }
+                                        });
+                                    } else {
+                                        insomniaCheckbox.post(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                insomniaCheckbox.performClick();
+                                            }
+                                        });
+                                    }
+                                    //map.clear();
+                                }//end symptom array list
+                                map.clear();
+                                //intercourse Checkbox
+                                if (periodMood.getIntercourse().equals("Yes")) {
+                                    YesIntercourseCheckbox.post(new Runnable() {
                                         @Override
                                         public void run() {
-                                            crampCheckbox.performClick();
+                                            YesIntercourseCheckbox.performClick();
                                         }
                                     });
-                                } else if (map.get(x).equals("bloating")) {
-                                    bloatingCheckbox.post(new Runnable() {
+                                } else {//no
+                                    NoIntercourseCheckbox.post(new Runnable() {
                                         @Override
                                         public void run() {
-                                            bloatingCheckbox.performClick();
+                                            NoIntercourseCheckbox.performClick();
                                         }
                                     });
-                                } else if (map.get(x).equals("pimples")) {
-                                    pimplesCheckbox.post(new Runnable() {
+                                }
+
+                                //period checkbox
+                                if (periodMood.getPeriod().equals("Yes")) {
+                                    YesPeriodCheckbox.post(new Runnable() {
                                         @Override
                                         public void run() {
-                                            pimplesCheckbox.performClick();
+                                            YesPeriodCheckbox.performClick();
                                         }
                                     });
-                                } else if (map.get(x).equals("pimples")) {
-                                    pimplesCheckbox.post(new Runnable() {
+                                } else {//no
+                                    NoPeriodCheckbox.post(new Runnable() {
                                         @Override
                                         public void run() {
-                                            pimplesCheckbox.performClick();
+                                            NoPeriodCheckbox.performClick();
                                         }
                                     });
-                                } else if (map.get(x).equals("headache")) {
-                                    headacheCheckbox.post(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            headacheCheckbox.performClick();
-                                        }
-                                    });
-                                } else if (map.get(x).equals("fatigue")) {
-                                    fatigueCheckbox.post(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            fatigueCheckbox.performClick();
-                                        }
-                                    });
+                                }
+                            }//end of map size()
+
+                        }//end if snapshot exist
+                        crampCheckbox.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                if (crampCheckbox.isChecked()) {
+                                    crampCheckbox.setChecked(true);
+                                    symptom.add("cramp");
                                 } else {
-                                    insomniaCheckbox.post(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            insomniaCheckbox.performClick();
-                                        }
-                                    });
+                                    crampCheckbox.setChecked(false);
+                                    symptom.remove("cramp");
                                 }
-                                //map.clear();
-                            }//end symptom array list
-                            map.clear();
-                            //intercourse Checkbox
-                            if (periodMood.getIntercourse().equals("Yes")) {
-                                YesIntercourseCheckbox.post(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        YesIntercourseCheckbox.performClick();
-                                    }
-                                });
-                            } else {//no
-                                NoIntercourseCheckbox.post(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        NoIntercourseCheckbox.performClick();
-                                    }
-                                });
                             }
 
-                            //period checkbox
-                            if (periodMood.getPeriod().equals("Yes")) {
-                                YesPeriodCheckbox.post(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        YesPeriodCheckbox.performClick();
-                                    }
-                                });
-                            } else {//no
-                                NoPeriodCheckbox.post(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        NoPeriodCheckbox.performClick();
-                                    }
-                                });
-                            }
-                        }//end of map size()
-
-                    }//end if snapshot exist
-                    crampCheckbox.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            if (crampCheckbox.isChecked()) {
-                                crampCheckbox.setChecked(true);
-                                symptom.add("cramp");
-                            } else {
-                                crampCheckbox.setChecked(false);
-                                symptom.remove("cramp");
-                            }
-                        }
-
-                    });
-                    bloatingCheckbox.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            if (bloatingCheckbox.isChecked()) {
-                                bloatingCheckbox.setChecked(true);
-                                symptom.add("bloating");
-                            } else {
-                                bloatingCheckbox.setChecked(false);
-                                symptom.remove("bloating");
-                            }
-                        }
-                    });
-                    pimplesCheckbox.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            if (pimplesCheckbox.isChecked()) {
-                                pimplesCheckbox.setChecked(true);
-                                symptom.add("pimples");
-                            } else {
-                                pimplesCheckbox.setChecked(false);
-                                symptom.remove("pimples");
-                            }
-                        }
-                    });
-
-                    headacheCheckbox.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            if (headacheCheckbox.isChecked()) {
-                                headacheCheckbox.setChecked(true);
-                                symptom.add("headache");
-                            } else {
-                                headacheCheckbox.setChecked(false);
-                                symptom.remove("headache");
-                            }
-                        }
-                    });
-
-                    fatigueCheckbox.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            if (fatigueCheckbox.isChecked()) {
-                                fatigueCheckbox.setChecked(true);
-                                symptom.add("fatigue");
-                            } else {
-                                fatigueCheckbox.setChecked(false);
-                                symptom.remove("fatigue");
-                            }
-                        }
-                    });
-
-                    insomniaCheckbox.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            if (insomniaCheckbox.isChecked()) {
-                                insomniaCheckbox.setChecked(true);
-                                symptom.add("insomnia");
-                            } else {
-                                insomniaCheckbox.setChecked(false);
-                                symptom.remove("insomnia");
-                            }
-                        }
-                    });
-
-                    //if yes is ticked-"yes" save into intercourse(periodMood class)
-                    //if yes is unticked-"no" save into intercourse(periodMood class)
-                    YesIntercourseCheckbox.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            if (YesIntercourseCheckbox.isChecked()) {
-                                YesIntercourseCheckbox.setChecked(true);
-                                NoIntercourseCheckbox.setChecked(false);
-                                periodMood.setIntercourse("Yes");
-                            } else {
-                                periodMood.setIntercourse("No");
-                            }
-                        }
-                    });
-
-                    NoIntercourseCheckbox.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            if (NoIntercourseCheckbox.isChecked()) {
-                                NoIntercourseCheckbox.setChecked(true);
-                                YesIntercourseCheckbox.setChecked(false);
-                                periodMood.setIntercourse("No");
-                            } else {
-                                periodMood.setIntercourse("Yes");
-                            }
-                        }
-                    });
-
-                    //if yes is ticked-"yes" save into period(periodMood class)
-                    //if yes is unticked-"no" save into period(periodMood class)
-                    YesPeriodCheckbox.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            if (YesPeriodCheckbox.isChecked()) {
-                                YesPeriodCheckbox.setChecked(true);
-                                NoPeriodCheckbox.setChecked(false);
-                                periodMood.setPeriod("Yes");
-                            } else {
-                                periodMood.setPeriod("No");
-                            }
-                        }
-                    });
-
-                    NoPeriodCheckbox.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            if (NoPeriodCheckbox.isChecked()) {
-                                NoPeriodCheckbox.setChecked(true);
-                                YesPeriodCheckbox.setChecked(false);
-                                periodMood.setPeriod("No");
-                            } else {
-                                periodMood.setPeriod("Yes");
-                            }
-                        }
-                    });
-                }//end onEvent
-            });//end snapshot listener
-        }//end on click
-        });//end setOn listener
-
-                //save into firebase
-                Button periodSaveBtn = findViewById(R.id.periodSaveButton);
-                //once save btn(period layout)is clicked ->save into firebase
-                periodSaveBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        String date = periodMood.getDate().toString();
-                        DocumentReference documentReference = firestore.collection("periodMood").document(date);
-                        Map<String, Object> periodAndMood = new HashMap<>();
-                        //put into firebase from periodMood class method
-                        if (symptom != null) {
-                            //add into firebase
-                            periodAndMood.put("symptom", symptom);
-                            periodAndMood.put("intercourse", periodMood.getIntercourse());
-                            periodAndMood.put("period", periodMood.getPeriod());
-                            firestore.collection("periodMood").document(date).update(periodAndMood);
-                            documentReference.set(periodAndMood, SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(@NonNull Void unused) {
-                                    Toast.makeText(getApplicationContext(), "Save Successfully", Toast.LENGTH_LONG).show();
-                                }
-                            }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(getApplicationContext(), "Please Try Again", Toast.LENGTH_LONG).show();
-                                }
-                            });
-                        }
-                    }
-                });
-
-                //if the date to save is existed, then it will update the field
-                //if the date is existed and the field data is existed, field data will update accordingly
-                Button moodSaveBtn = findViewById(R.id.moodSaveButton);
-                moodSaveBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        //put into firebase from periodMood class method
-                        String date = periodMood.getDate().toString();
-                        DocumentReference documentReference = firestore.collection("periodMood").document(date);
-                        Map<String, Object> periodAndMood = new HashMap<>();
-
-                        periodAndMood.put("mood", periodMood.getMood());
-                        periodAndMood.put("sport", periodMood.getSport());
-                        periodAndMood.put("activity", periodMood.getActivity());
-                        firestore.collection("periodMood").document(date).update(periodAndMood);
-                        documentReference.set(periodAndMood, SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        });
+                        bloatingCheckbox.setOnClickListener(new View.OnClickListener() {
                             @Override
-                            public void onSuccess(@NonNull Void unused) {
-                                Toast.makeText(getApplicationContext(), "Save Successfully", Toast.LENGTH_LONG).show();
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(getApplicationContext(), "Please Try Again", Toast.LENGTH_LONG).show();
+                            public void onClick(View v) {
+                                if (bloatingCheckbox.isChecked()) {
+                                    bloatingCheckbox.setChecked(true);
+                                    symptom.add("bloating");
+                                } else {
+                                    bloatingCheckbox.setChecked(false);
+                                    symptom.remove("bloating");
+                                }
                             }
                         });
+                        pimplesCheckbox.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                if (pimplesCheckbox.isChecked()) {
+                                    pimplesCheckbox.setChecked(true);
+                                    symptom.add("pimples");
+                                } else {
+                                    pimplesCheckbox.setChecked(false);
+                                    symptom.remove("pimples");
+                                }
+                            }
+                        });
+
+                        headacheCheckbox.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                if (headacheCheckbox.isChecked()) {
+                                    headacheCheckbox.setChecked(true);
+                                    symptom.add("headache");
+                                } else {
+                                    headacheCheckbox.setChecked(false);
+                                    symptom.remove("headache");
+                                }
+                            }
+                        });
+
+                        fatigueCheckbox.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                if (fatigueCheckbox.isChecked()) {
+                                    fatigueCheckbox.setChecked(true);
+                                    symptom.add("fatigue");
+                                } else {
+                                    fatigueCheckbox.setChecked(false);
+                                    symptom.remove("fatigue");
+                                }
+                            }
+                        });
+
+                        insomniaCheckbox.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                if (insomniaCheckbox.isChecked()) {
+                                    insomniaCheckbox.setChecked(true);
+                                    symptom.add("insomnia");
+                                } else {
+                                    insomniaCheckbox.setChecked(false);
+                                    symptom.remove("insomnia");
+                                }
+                            }
+                        });
+
+                        //if yes is ticked-"yes" save into intercourse(periodMood class)
+                        //if yes is unticked-"no" save into intercourse(periodMood class)
+                        YesIntercourseCheckbox.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                if (YesIntercourseCheckbox.isChecked()) {
+                                    YesIntercourseCheckbox.setChecked(true);
+                                    NoIntercourseCheckbox.setChecked(false);
+                                    periodMood.setIntercourse("Yes");
+                                } else {
+                                    periodMood.setIntercourse("No");
+                                }
+                            }
+                        });
+
+                        NoIntercourseCheckbox.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                if (NoIntercourseCheckbox.isChecked()) {
+                                    NoIntercourseCheckbox.setChecked(true);
+                                    YesIntercourseCheckbox.setChecked(false);
+                                    periodMood.setIntercourse("No");
+                                } else {
+                                    periodMood.setIntercourse("Yes");
+                                }
+                            }
+                        });
+
+                        //if yes is ticked-"yes" save into period(periodMood class)
+                        //if yes is unticked-"no" save into period(periodMood class)
+                        YesPeriodCheckbox.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                if (YesPeriodCheckbox.isChecked()) {
+                                    YesPeriodCheckbox.setChecked(true);
+                                    NoPeriodCheckbox.setChecked(false);
+                                    periodMood.setPeriod("Yes");
+                                } else {
+                                    periodMood.setPeriod("No");
+                                }
+                            }
+                        });
+
+                        NoPeriodCheckbox.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                if (NoPeriodCheckbox.isChecked()) {
+                                    NoPeriodCheckbox.setChecked(true);
+                                    YesPeriodCheckbox.setChecked(false);
+                                    periodMood.setPeriod("No");
+                                } else {
+                                    periodMood.setPeriod("Yes");
+                                }
+                            }
+                        });
+                    }//end onEvent
+                });//end snapshot listener
+            }//end on click
+        });//end setOn listener
+
+        //save into firebase
+        Button periodSaveBtn = findViewById(R.id.periodSaveButton);
+        //once save btn(period layout)is clicked ->save into firebase
+        periodSaveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String date = periodMood.getDate().toString();
+                DocumentReference documentReference = firestore.collection("periodMood").document(date);
+                Map<String, Object> periodAndMood = new HashMap<>();
+                //put into firebase from periodMood class method
+                if (symptom != null) {
+                    //add into firebase
+                    periodAndMood.put("date",date);
+                    periodAndMood.put("symptom", symptom);
+                    periodAndMood.put("intercourse", periodMood.getIntercourse());
+                    periodAndMood.put("period", periodMood.getPeriod());
+                    firestore.collection("periodMood").document(date).update(periodAndMood);
+                    documentReference.set(periodAndMood, SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(@NonNull Void unused) {
+                            Toast.makeText(getApplicationContext(), "Save Successfully", Toast.LENGTH_LONG).show();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(getApplicationContext(), "Please Try Again", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }
+            }
+        });
+
+        //if the date to save is existed, then it will update the field
+        //if the date is existed and the field data is existed, field data will update accordingly
+        Button moodSaveBtn = findViewById(R.id.moodSaveButton);
+        moodSaveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //put into firebase from periodMood class method
+                String date = periodMood.getDate().toString();
+                DocumentReference documentReference = firestore.collection("periodMood").document(date);
+                Map<String, Object> periodAndMood = new HashMap<>();
+                periodAndMood.put("date",date);
+                periodAndMood.put("mood", periodMood.getMood());
+                periodAndMood.put("sport", periodMood.getSport());
+                periodAndMood.put("activity", periodMood.getActivity());
+                firestore.collection("periodMood").document(date).update(periodAndMood);
+                documentReference.set(periodAndMood, SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(@NonNull Void unused) {
+                        Toast.makeText(getApplicationContext(), "Save Successfully", Toast.LENGTH_LONG).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(getApplicationContext(), "Please Try Again", Toast.LENGTH_LONG).show();
                     }
                 });
-                //retrieval data and show into period and mood layout
             }
+        });
+        //retrieval data and show into period and mood layout
+    }
 
     public void displayPeriod(View view)
     {

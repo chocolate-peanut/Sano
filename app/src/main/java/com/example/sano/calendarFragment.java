@@ -197,8 +197,10 @@ public class calendarFragment extends Fragment implements CalendarAdapter.OnItem
         String formattedDate = today.format(DateTimeFormatter.ofPattern("dd-MMM-yy"));
         periodMood.setStartDate(selectedDate);
         periodStartDate = periodMood.getStartDate().toString();
+        periodEndDate = today.plusDays(5).toString();
         Map<String,Object> periodDate=new HashMap<>();
         periodDate.put("StartDate",periodStartDate);
+        periodDate.put("EndDate",periodEndDate);
         firestore.collection("StartDate").document(monthYearFromDate(selectedDate)).update(periodDate);
         documentReference.set(periodDate, SetOptions.merge()).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
