@@ -381,7 +381,7 @@ public class PeriodMoodFragment extends AppCompatActivity {
                             System.out.println(periodMood.getIntercourse());
                             System.out.println(periodMood.getPeriod());
 
-                            if(map.size()!=0) {
+                            if(map!=null) {
                                 for (int x = 0; x < map.size(); x++) {
                                     System.out.println(map.get(x));
                                     if (map.get(x).equals("cramp")) {
